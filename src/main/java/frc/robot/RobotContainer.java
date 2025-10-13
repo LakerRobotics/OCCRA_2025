@@ -5,15 +5,17 @@
 package frc.robot;
 
 import frc.robot.commands.Autos;
-//import frc.robot.commands.ArmPower;
+import frc.robot.commands.ArmPower;
 import frc.robot.subsystems.DriveTrain;
-//import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.ArmSubsystem;
 //import frc.robot.subsystems.ClimbSubsystem;
 import edu.wpi.first.wpilibj.PS4Controller;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.CommandPS4Controller;
+//import edu.wpi.first.wpilibj2.command.button.CommandPS4Controller;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
@@ -24,9 +26,9 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   private final static DriveTrain m_driveTrain = new DriveTrain();;// The robot's subsystems and commands are defined here...
- // private final static ArmSubsystem m_subsystem = new ArmSubsystem();
+  private final static ArmSubsystem m_Armsubsystem = new ArmSubsystem();
   private final static RobotContainer m_robotContainer = new RobotContainer(); 
-//  private final static ClimbSubsystem m_Climbsubsystem = new ClimbSubsystem();    
+  //private final static ClimbSubsystem m_Climbsubsystem = new ClimbSubsystem();    
   
   // Replace with CommandXboxController or CommandJoystick if needed
   private final XboxController m_driverController =
@@ -35,11 +37,17 @@ public class RobotContainer {
   private final XboxController m_opController =
       new XboxController(1);
 
+   // A chooser for autonomous commands
+   SendableChooser<Command> m_chooser = new SendableChooser<>();
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
   //  m_driveTrain = 
     // Configure the trigger bindings
     //configureBindings();
+
+    //SETUP AUTONOMOUS CODE
+    configureAutos();
   }
   
   public static RobotContainer getInstance() {
@@ -71,11 +79,17 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand()
    {
-   // FIX THIS LINE WHEN CODING OCCRA AUTON!!!-SETH
-    return null;
+    return m_chooser.getSelected();
     // An example command will be run in autonomous
 
   }
+
+  private void configureAutos() {
+    SmartDashboard.putData("auton chooser",m_chooser); 
+    m_chooser.setDefaultOption("Drive Forward", Autos.driveForwardAuto(m_driveTrain));
+    m_chooser.addOption("Drive Forward and Turn", Autos.driveForwardAutoAndTurn(m_driveTrain));
+  }
+  
   public XboxController getDriverController() {
     // TODO Auto-generated method stub
    // throw new UnsupportedOperationException("Unimplemented method 'getDriverController'");
@@ -90,9 +104,9 @@ public class RobotContainer {
     return m_driveTrain;
   }
 
- // public ArmSubsystem getArmSubsystem(){
-//    return m_subsystem;
-//  }
+ public ArmSubsystem getArmSubsystem(){
+    return m_Armsubsystem;
+  }
 
 
 
