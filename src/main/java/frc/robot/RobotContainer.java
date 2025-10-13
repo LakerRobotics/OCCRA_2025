@@ -4,7 +4,7 @@
 
 package frc.robot;
 
-//import frc.robot.commands.Autos;
+import frc.robot.commands.Autos;
 //import frc.robot.commands.ArmPower;
 import frc.robot.subsystems.DriveTrain;
 //import frc.robot.subsystems.ArmSubsystem;
