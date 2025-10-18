@@ -4,24 +4,51 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj2.command.Command;
+//import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+//import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
 public class IntakeSubsystem extends SubsystemBase {
- CANSparkMax IntakeMotorLeft = new CANSparkMax (50, MotorType.kBrushed);
- CANSparkMax IntakeMotorRight = new CANSparkMax(43, MotorType.kBrushed);
+ private  CANSparkMax intakeMotorLeft;
+ private CANSparkMax intakeMotorRight;
+ //private MotorControllerGroup intakeMotorGroup;
+ private DifferentialDrive intakeDrive;
 
-  public IntakeSubsystem() {
-    IntakeMotorLeft.setIdleMode(CANSparkMax.IdleMode.kBrake);
-    IntakeMotorRight.setIdleMode(CANSparkMax.IdleMode.kBrake);
-    IntakeMotorRight.setInverted(true);
-  }
+ public IntakeSubsystem() {
+  // Initialize individual motors
+  intakeMotorLeft = new CANSparkMax(52, MotorType.kBrushed);
+  intakeMotorRight = new CANSparkMax(51, MotorType.kBrushed);
 
-  public void setIntakePower(double motorPower) {
-    IntakeMotorLeft.set(motorPower);
-    IntakeMotorRight.set(motorPower);
-  }
+  // Configure motor settings
+  intakeMotorLeft.setIdleMode(CANSparkMax.IdleMode.kBrake);
+  intakeMotorRight.setIdleMode(CANSparkMax.IdleMode.kBrake);
+  intakeMotorRight.setInverted(true);
+
+  // Create differential drive for arcade-style control
+  intakeDrive = new DifferentialDrive(intakeMotorLeft, intakeMotorRight);
+
+  // Group motors together for synchronized control
+  //intakeMotorGroup = new MotorControllerGroup(intakeMotorLeft, intakeMotorRight);
+}
+
+public void intakeArcadeDrive(double intakePower, double rotationPower) {
+  boolean squareInputs = true;
+  intakeDrive.arcadeDrive(intakePower, rotationPower, squareInputs);
+}
+
+public void stopIntake() {
+  intakeDrive.arcadeDrive(0, 0);
+}
+
+/*public void setIntakePower(double motorPower) {
+  intakeMotorGroup.set(motorPower);
+}
+
+public void stopIntake() {
+  intakeMotorGroup.set(0);
+}*/
 
 }

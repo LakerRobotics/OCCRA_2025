@@ -32,6 +32,7 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
     m_robotContainer.getDriveTrain().arcadeDrive(.25, .25);
+    m_robotContainer.getArmSubsystem().setArmZeroOffset();
  
   }
 
@@ -117,10 +118,14 @@ public class Robot extends TimedRobot {
      (-RobotContainer.getInstance().getOperatorController().getRightY())
    );
 
-   m_robotContainer.getIntakeSubsystem().setIntakePower(
-     RobotContainer.getInstance().getOperatorController().getLeftTriggerAxis() -
-     RobotContainer.getInstance().getOperatorController().getRightTriggerAxis()
-   );
+   m_robotContainer.getIntakeSubsystem().intakeArcadeDrive(
+    -RobotContainer.getInstance().getOperatorController().getLeftY(),
+    -RobotContainer.getInstance().getOperatorController().getLeftX()
+  );
+   
+   /*m_robotContainer.getIntakeSubsystem().setIntakePower(
+     -RobotContainer.getInstance().getOperatorController().getLeftY()
+   );*/
 
   // m_robotContainer.getClimbSubsystem().setClimbPower(
   //   -RobotContainer.getInstance().getOperatorController().getLeftY()
