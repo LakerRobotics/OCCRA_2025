@@ -113,12 +113,18 @@ public class Robot extends TimedRobot {
       -RobotContainer.getInstance().getDriverController().getRightX()*0.75 /*turnpower*/  
        
       );
-  // m_robotContainer.getArmSubsystem().setArmPower(
-  //   (-RobotContainer.getInstance().getOperatorController().getRightY())
-  // );
+   m_robotContainer.getArmSubsystem().setArmPower(
+     (-RobotContainer.getInstance().getOperatorController().getRightY())
+   );
+
+   m_robotContainer.getIntakeSubsystem().setIntakePower(
+     RobotContainer.getInstance().getOperatorController().getLeftTriggerAxis() -
+     RobotContainer.getInstance().getOperatorController().getRightTriggerAxis()
+   );
+
   // m_robotContainer.getClimbSubsystem().setClimbPower(
   //   -RobotContainer.getInstance().getOperatorController().getLeftY()
-     
+
   //   );
   }
   @Override

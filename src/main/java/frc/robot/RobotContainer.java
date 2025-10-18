@@ -6,9 +6,11 @@ package frc.robot;
 
 import frc.robot.commands.Autos;
 import frc.robot.commands.ArmPower;
+import frc.robot.commands.IntakePower;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ArmSubsystem;
 //import frc.robot.subsystems.ClimbSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
 import edu.wpi.first.wpilibj.PS4Controller;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -27,6 +29,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public class RobotContainer {
   private final static DriveTrain m_driveTrain = new DriveTrain();;// The robot's subsystems and commands are defined here...
   private final static ArmSubsystem m_Armsubsystem = new ArmSubsystem();
+  private final static IntakeSubsystem m_intake = new IntakeSubsystem();
   private final static RobotContainer m_robotContainer = new RobotContainer(); 
   //private final static ClimbSubsystem m_Climbsubsystem = new ClimbSubsystem();    
   
@@ -42,7 +45,7 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-  //  m_driveTrain = 
+  //  m_driveTrain =
     // Configure the trigger bindings
     //configureBindings();
 
@@ -89,7 +92,7 @@ public class RobotContainer {
     m_chooser.setDefaultOption("Drive Forward", Autos.driveForwardAuto(m_driveTrain));
     m_chooser.addOption("Drive Forward and Turn", Autos.driveForwardAutoAndTurn(m_driveTrain));
   }
-  
+
   public XboxController getDriverController() {
     // TODO Auto-generated method stub
    // throw new UnsupportedOperationException("Unimplemented method 'getDriverController'");
@@ -108,7 +111,9 @@ public class RobotContainer {
     return m_Armsubsystem;
   }
 
-
+  public IntakeSubsystem getIntakeSubsystem(){
+    return m_intake;
+  }
 
 
  // public ClimbSubsystem getClimbSubsystem() {

@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
-public class ClimbSubsystem extends SubsystemBase {
+/*public class ClimbSubsystem SubsystemBase {
    CANSparkMax ClimbMotor = new CANSparkMax(14 , MotorType.kBrushed);
   /** Creates a new ExampleSubsystem. */
   /*public ClimbSubsystem() { ClimbMotor.setIdleMode(CANSparkMax.IdleMode.kBrake);}
@@ -19,21 +19,21 @@ public class ClimbSubsystem extends SubsystemBase {
    *
    * @return a command
    */
- /*  public Command exampleMethodCommand() {
+  /*  public Command exampleMethodCommand() {
     // Inline construction of command goes here.
     // Subsystem::RunOnce implicitly requires `this` subsystem.
-    return runOnce(
+   /*  return runOnce(
         () -> {
           /* one-time action goes here */
-  /*     });
-  }
+     //  });
+ // } 
 
   /**
    * An example method querying a boolean state of the subsystem (for example, a digital sensor).
    *
    * @return value of some boolean subsystem state, such as a digital sensor.
    */
-/*   public boolean exampleCondition() {
+  /*public boolean exampleCondition() {
     // Query some boolean state, such as a digital sensor.
     return false;
   }
