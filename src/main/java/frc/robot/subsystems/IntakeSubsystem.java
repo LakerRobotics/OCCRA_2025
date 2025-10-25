@@ -19,8 +19,8 @@ public class IntakeSubsystem extends SubsystemBase {
 
  public IntakeSubsystem() {
   // Initialize individual motors
-  intakeMotorLeft = new CANSparkMax(52, MotorType.kBrushed);
-  intakeMotorRight = new CANSparkMax(51, MotorType.kBrushed);
+  intakeMotorLeft = new CANSparkMax(52, MotorType.kBrushless);
+  intakeMotorRight = new CANSparkMax(51, MotorType.kBrushless);
 
   // Configure motor settings
   intakeMotorLeft.setIdleMode(CANSparkMax.IdleMode.kBrake);

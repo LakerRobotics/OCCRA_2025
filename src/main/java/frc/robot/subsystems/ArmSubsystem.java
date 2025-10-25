@@ -10,11 +10,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.AbsoluteEncoder;
-import com.revrobotics.SparkMaxAbsoluteEncoder;
+import com.revrobotics.SparkAbsoluteEncoder;
 
 public class ArmSubsystem extends SubsystemBase {
-  private CANSparkMax armMotor1 = new CANSparkMax(50, MotorType.kBrushed);
-  private CANSparkMax armMotor2 = new CANSparkMax(39, MotorType.kBrushed);
+  private CANSparkMax armMotor1 = new CANSparkMax(50, MotorType.kBrushless);
+  private CANSparkMax armMotor2 = new CANSparkMax(39, MotorType.kBrushless);
   private AbsoluteEncoder armEncoder;
   /** Creates a new ExampleSubsystem. */
   
@@ -22,7 +22,9 @@ public class ArmSubsystem extends SubsystemBase {
     armMotor1.setIdleMode(CANSparkMax.IdleMode.kBrake); 
     armMotor2.setIdleMode(CANSparkMax.IdleMode.kBrake);
     armMotor2.setInverted(true);
-    armEncoder = armMotor1.getAbsoluteEncoder(SparkMaxAbsoluteEncoder.Type.kDutyCycle);;
+    armEncoder = armMotor1.getAbsoluteEncoder(SparkAbsoluteEncoder.Type.kDutyCycle);
+    //armEncoder.setPositionConversionFactor(1.0);
+    //armEncoder.setInverted(false);
   }
 
   /*
@@ -61,8 +63,8 @@ public class ArmSubsystem extends SubsystemBase {
   }
 
   public void setArmPower(double motorPower){
-    armMotor1.set(motorPower);
-    armMotor2.set(motorPower);
+    armMotor1.set(motorPower*0.1);
+    armMotor2.set(motorPower*0.1);
   }
 
   public double getArmPosition() {
