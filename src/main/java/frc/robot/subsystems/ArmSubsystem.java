@@ -7,22 +7,22 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkLowLevel.MotorType;
+import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.AbsoluteEncoder;
-import com.revrobotics.SparkAbsoluteEncoder;
+import com.revrobotics.spark.SparkAbsoluteEncoder;
 
 public class ArmSubsystem extends SubsystemBase {
-  private CANSparkMax armMotor1 = new CANSparkMax(50, MotorType.kBrushless);
-  private CANSparkMax armMotor2 = new CANSparkMax(39, MotorType.kBrushless);
+  private SparkMax armMotor1 = new SparkMax(50, MotorType.kBrushless);
+  private SparkMax armMotor2 = new SparkMax(39, MotorType.kBrushless);
   private AbsoluteEncoder armEncoder;
   /** Creates a new ExampleSubsystem. */
   
   public ArmSubsystem() {
-    armMotor1.setIdleMode(CANSparkMax.IdleMode.kBrake); 
-    armMotor2.setIdleMode(CANSparkMax.IdleMode.kBrake);
+    //armMotor1.setIdleMode(SparkMax.IdleMode.kBrake); 
+   // armMotor2.setIdleMode(SparkMax.IdleMode.kBrake);
     armMotor2.setInverted(true);
-    armEncoder = armMotor1.getAbsoluteEncoder(SparkAbsoluteEncoder.Type.kDutyCycle);
+    armEncoder = armMotor1.getAbsoluteEncoder();
     //armEncoder.setPositionConversionFactor(1.0);
     //armEncoder.setInverted(false);
   }
@@ -71,9 +71,9 @@ public class ArmSubsystem extends SubsystemBase {
     return armEncoder.getPosition();
   }
 
-  public void setArmZeroOffset() {
-    armEncoder.setZeroOffset(armEncoder.getPosition());
-  }
+ // public void setArmZeroOffset() {
+ //   armEncoder.setZeroOffset(armEncoder.getPosition());
+ // }
 
   public boolean isArmAtPosition(double targetPosition, double tolerance) {
     double currentPosition = getArmPosition();

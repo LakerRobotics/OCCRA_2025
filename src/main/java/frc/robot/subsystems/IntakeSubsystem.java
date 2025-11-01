@@ -8,23 +8,23 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 //import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkLowLevel.MotorType;
+import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.SparkLowLevel.MotorType;
 
 public class IntakeSubsystem extends SubsystemBase {
- private  CANSparkMax intakeMotorLeft;
- private CANSparkMax intakeMotorRight;
+ private SparkMax intakeMotorLeft;
+ private SparkMax intakeMotorRight;
  //private MotorControllerGroup intakeMotorGroup;
  private DifferentialDrive intakeDrive;
 
  public IntakeSubsystem() {
   // Initialize individual motors
-  intakeMotorLeft = new CANSparkMax(52, MotorType.kBrushless);
-  intakeMotorRight = new CANSparkMax(51, MotorType.kBrushless);
+  intakeMotorLeft = new SparkMax(52, MotorType.kBrushless);
+  intakeMotorRight = new SparkMax(51, MotorType.kBrushless);
 
   // Configure motor settings
-  intakeMotorLeft.setIdleMode(CANSparkMax.IdleMode.kBrake);
-  intakeMotorRight.setIdleMode(CANSparkMax.IdleMode.kBrake);
+ // intakeMotorLeft.setIdleMode(SparkMax.IdleMode.kBrake);
+ // intakeMotorRight.setIdleMode(SparkMax.IdleMode.kBrake);
   intakeMotorRight.setInverted(true);
 
   // Create differential drive for arcade-style control
