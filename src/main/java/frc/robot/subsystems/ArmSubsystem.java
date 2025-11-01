@@ -19,8 +19,8 @@ public class ArmSubsystem extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
   
   public ArmSubsystem() {
-    //armMotor1.setIdleMode(SparkMax.IdleMode.kBrake); 
-   // armMotor2.setIdleMode(SparkMax.IdleMode.kBrake);
+    //armMotor1.setIdleMode(CANSparkMax.IdleMode.kBrake); 
+    //armMotor2.setIdleMode(CANSparkMax.IdleMode.kBrake);
     armMotor2.setInverted(true);
     armEncoder = armMotor1.getAbsoluteEncoder();
     //armEncoder.setPositionConversionFactor(1.0);

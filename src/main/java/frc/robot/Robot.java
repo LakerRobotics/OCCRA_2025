@@ -74,23 +74,23 @@ public class Robot extends TimedRobot {
   }
 
   /** This function is called periodically during autonomous. */
-  @Override
-  public void autonomousPeriodic(){
-  if (ArmRunTime.get()<3.1){
+ // @Override
+  //public void autonomousPeriodic(){
+  //if (ArmRunTime.get()<3.1){
    // m_robotContainer.getArmSubsystem().setArmPower(-0.7);
-     m_robotContainer.getDriveTrain().arcadeDrive(0,0);
-   } /*power*/
-    else {
-      if (ArmRunTime.get()<8){
+    // m_robotContainer.getDriveTrain().arcadeDrive(0,0);
+   //} /*power*/
+  //  else {
+  //    if (ArmRunTime.get()<8){
      // m_robotContainer.getArmSubsystem().setArmPower(0.3);
-      m_robotContainer.getDriveTrain().arcadeDrive(0.5,0);
-      } 
-      else {
+   //   m_robotContainer.getDriveTrain().arcadeDrive(0.5,0);
+   //   } 
+   //   else {
      //   m_robotContainer.getArmSubsystem().setArmPower(0);
-      m_robotContainer.getDriveTrain().arcadeDrive(0,0);
-      }
-    }
-  }
+   //   m_robotContainer.getDriveTrain().arcadeDrive(0,0);
+  //    }
+    //}
+  //}
 
   @Override
   public void teleopInit() {
@@ -110,8 +110,8 @@ public class Robot extends TimedRobot {
     // m_robotContainer.getDriveTrain().arcadeDrive(0.6, 0);
     //System.out.println("setting arcade to 1 1 0");
    m_robotContainer.getDriveTrain().arcadeDrive(
-     - RobotContainer.getInstance().getDriverController().getLeftY()*0.75 /*power*/,
-      -RobotContainer.getInstance().getDriverController().getRightX()*0.75 /*turnpower*/  
+     - RobotContainer.getInstance().getDriverController().getLeftY()*0.80 /*power*/,
+      -RobotContainer.getInstance().getDriverController().getRightX()*0.60 /*turnpower*/  
        
       );
    m_robotContainer.getArmSubsystem().setArmPower(

@@ -23,8 +23,8 @@ public class IntakeSubsystem extends SubsystemBase {
   intakeMotorRight = new SparkMax(51, MotorType.kBrushless);
 
   // Configure motor settings
- // intakeMotorLeft.setIdleMode(SparkMax.IdleMode.kBrake);
- // intakeMotorRight.setIdleMode(SparkMax.IdleMode.kBrake);
+  //intakeMotorLeft.setIdleMode(CANSparkMax.IdleMode.kBrake);
+  //intakeMotorRight.setIdleMode(CANSparkMax.IdleMode.kBrake);
   intakeMotorRight.setInverted(true);
 
   // Create differential drive for arcade-style control

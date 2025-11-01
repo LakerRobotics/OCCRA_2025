@@ -30,7 +30,7 @@ public final class Autos {
       
     new DriveTrainFowards (driveTrain).withTimeout(2.5),
     //Turn code TEST ASAP -Hailey
-    Commands.runOnce(() -> driveTrain.arcadeDrive(0, 0.5), driveTrain).withTimeout(0),
+    Commands.runOnce(() -> driveTrain.arcadeDrive(0, 0.5), driveTrain).withTimeout(1.5),
 
     //Robot stops
     Commands.runOnce(() -> driveTrain.arcadeDrive(0, 0), driveTrain)

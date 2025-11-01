@@ -90,6 +90,7 @@ public class RobotContainer {
   private void configureAutos() {
     SmartDashboard.putData("auton chooser",m_chooser); 
     m_chooser.setDefaultOption("Drive Forward", Autos.driveForwardAuto(m_driveTrain));
+    m_chooser.addOption("Drive Forward", Autos.driveForwardAuto(m_driveTrain));
     m_chooser.addOption("Drive Forward and Turn", Autos.driveForwardAutoAndTurn(m_driveTrain));
   }
 
